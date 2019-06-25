@@ -1,13 +1,22 @@
+// Variável que guarda o contexto da conversa
 var contexto;
+/**
+ * Envia mensagem para o Watson
+ * @param {string} mensagem a mensagem a ser enviada para o Watson.
 
+*/
 function enviar_mensagem_watson(mensagem){
-
+/**
+ * 
+ */
+// Variável que busca o request do chat bot
     var http = new XMLHttpRequest();
     var url = 'https://gateway.watsonplatform.net/assistant/api/v1/workspaces/8c5d1b26-0976-4b7d-aee4-c519254bfc3b/message?version=2019-06-18';
 
     http.open('POST', url, true);
     var inputUsuario = document.getElementById("input-usuario")
     console.log(inputUsuario.value)
+    
 
     //Send the proper header information along with the request
     http.setRequestHeader('Content-Type', 'application/json');
@@ -63,3 +72,10 @@ btnBtn.addEventListener("click", function (event) {
 
 })
 
+var input = document.getElementById("input-usuario");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("btn-btn").click();
+  }
+});
